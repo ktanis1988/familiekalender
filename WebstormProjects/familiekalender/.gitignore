@@ -22,3 +22,34 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Systeembestanden en gebruikersinstellingen
+.CFUserTextEncoding
+.ssh/
+.gitconfig
+.zshrc
+.zprofile
+.zsh_history
+.zsh_sessions/
+
+# Persoonlijke mappen
+/Applications/
+/Desktop/
+/Documents/
+/Downloads/
+/Library/
+/Movies/
+/Music/
+/Pictures/
+/Public/
+/PyCharmMiscProject/
+/PycharmProjects/
+
+# Overige bestanden
+/fix_vv_vrc_nginx.sh
+/te_verwijderen.txt
+/recovered_files/
+/vv-vrc-frontend-new/
+/vv-vrc-frontend/
+/Eindopdracht_KommerTanis/
+/Google Drive
