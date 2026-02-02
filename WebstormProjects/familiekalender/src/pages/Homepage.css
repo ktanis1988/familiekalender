@@ -1,5 +1,13 @@
 /* Algemeen */
 
+body{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFF1E6;
+    box-sizing: border-box;
+}
+
 .homepage-container {
     background-color: #FFF1E6;
     height: 100vh;
@@ -10,6 +18,7 @@
     text-align: center;
 }
 
+/* Hoofdtitel */
 .homepage-container h1 {
     font-size: 45px;
     font-weight: bold;
@@ -17,9 +26,66 @@
     margin-bottom: 10px;
 }
 
+/* Subtitel */
 .homepage-container p {
     font-style: italic;
     font-size: 19px;
     color: #666666;
     margin-bottom: 20px;
 }
+
+/* Kalendericoon */
+.icon {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+/* Formulierstijl */
+.form-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #F2F2F2;
+}
+
+    .form-container input:focus {
+        outline: none;
+        border-color: #A55353;
+    }
+
+    /* Basisstijl knoppen */
+    .button {
+        width: 100%;
+        max-width: 400px;
+        padding: 12px;
+        font-size: 16px;
+        background-color: #A55353;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        margin-bottom: 15px;
+    }
+
+    /* Login knop */
+    .button.primary {
+        max-width: 400px;
+    }
+
+    /* Registreer knop */
+    .button.secondary {
+        max-width: 350px;
+    }
+
+    /* Wachtwoord vergeten knop */
+    .button.tertiary {
+        max-width: 300px;
+    }
