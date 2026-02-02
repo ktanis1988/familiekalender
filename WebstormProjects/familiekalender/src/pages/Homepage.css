@@ -1,17 +1,25 @@
 /* Algemeen */
 
 .homepage-container {
-    background-color: #F5F5F5;
+    background-color: #FFF1E6;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .homepage-container h1 {
-    font-size: 2.5rem;
+    font-size: 45px;
     font-weight: bold;
-    margin-bottom: 1rem;
-    text-align: center;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.homepage-container p {
+    font-style: italic;
+    font-size: 19px;
+    color: #666666;
+    margin-bottom: 20px;
 }
