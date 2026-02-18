@@ -1,0 +1,25 @@
+/* Algemeen */
+
+.registerpage-container {
+    background-color: #FFF1E6;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Hoofdtitel */
+
+.registerpage-container h1 {
+    font-size: 45px;
+    font-weight: bold;
+    color: #666666;
+    margin-bottom: 10px;
+}
+
+/* Subtitel */
+
+.registerpage-container p {
+
+}
