@@ -21,5 +21,74 @@
 /* Subtitel */
 
 .registerpage-container p {
+    font-style: italic;
+    font-size: 18px;
+    color: #666666;
+    margin-bottom: 20px;
+}
 
+/* Formulierstijl */
+
+.register-form-container {
+    widthww: 100%;
+    max-width: 400px;
+}
+
+.register-form-container label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    color: #333333;
+    margin-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.register-form-container input {
+    width: 100%;
+    paddding: 12px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #F2F2F2;
+}
+
+.register-form-container input:focus {
+    outline: none;
+    border-color: #A55353;
+}
+
+/* Tekst tussen knoppen */
+
+.login-link {
+    font-size: 14px;
+    color: #333333;
+    margin: 20px 0 10px 0;
+}
+
+/* Basisstijl knoppen */
+
+.button {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #A55353;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+/* Account aanmaken knop */
+
+.button.primary {
+    max-width: 400px;
+}
+
+/* Inloggen knop */
+
+.button.secondary {
+    max-width: 400px;
 }
