@@ -1,0 +1,87 @@
+/* Container */
+
+.addactivity-container {
+    background-color: #FFF1E6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Header */
+
+.addactivity-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.back-button {
+    background-color: transparent;
+    border: none;
+    font-size: 32px;
+    color: #333333;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.addactivity-header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333333;
+}
+
+/* Formulier */
+
+.addactivity-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-field {
+    margin-bottom: 20px;
+}
+
+.form-field label {
+    display: block;
+    font-size: 12px;
+    color: #666666;
+    margin-bottom: 5px;
+}
+
+.form-field input {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #E8DDD4;
+    color: #333333;
+}
+
+.form-field input::placeholder {
+    color: #666666;
+}
+
+/* Knoppen */
+
+.submit-button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    background-color: #A55353;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.cancel-button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    background-color: #A55353;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
