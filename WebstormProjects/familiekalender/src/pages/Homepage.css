@@ -1,13 +1,5 @@
 /* Algemeen */
 
-body{
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #FFF1E6;
-    box-sizing: border-box;
-}
-
 .homepage-container {
     background-color: #FFF1E6;
     height: 100vh;
