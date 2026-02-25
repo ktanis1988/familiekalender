@@ -4,6 +4,7 @@ import Homepage from "./pages/Homepage";
 import Registerpage from "./pages/Registerpage";
 import Calendarpage from "./pages/Calendarpage";
 import Addactivitypage from "./pages/Addactivitypage";
+import Dayviewpage from "./pages/Dayviewpage";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/register" element={<Registerpage />} />
                 <Route path="/calendar" element={<Calendarpage />} />
                 <Route path="/addactivity" element={<Addactivitypage />} />
+                <Route path="/dayview" elememnt={<Dayviewpage />} />
             </Routes>
         </Router>
     );
