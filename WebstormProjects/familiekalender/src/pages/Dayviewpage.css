@@ -1,0 +1,93 @@
+/* Container */
+
+.dayview-container {
+    background-color: #FFF1E6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Header met datum en navigatie */
+
+.dayview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.dayview-header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.nav-arrow {
+    background-color: transparent;
+    border: none;
+    font-size: 32px;
+    color:#333333;
+    cursor: pointer;
+}
+
+/* Tijdslots */
+
+.timeslots {
+    max-width: 800px;
+    margin: 0 auto 100px auto;
+}
+
+.timeslot {
+    display: flex;
+    align-items: center;
+    background-color: #E8DDD4;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.time {
+    font-size: 14px;
+    color: #333333;
+    min-width: 150px;
+}
+
+.activity {
+    font-size: 16px;
+    color: #333333;
+    margin-left: 30px;
+}
+
+/* Opslaan knop */
+
+.save-button {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 30px auto;
+    padding: 15px;
+    font-size: 18px;
+    background-color: #A55353;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+/* Plus knop rechtsonder */
+
+.add-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #A55353;
+    color: white;
+    font-size: 32px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
