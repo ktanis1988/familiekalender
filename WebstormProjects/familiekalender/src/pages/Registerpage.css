@@ -92,3 +92,13 @@
 .button.secondary {
     max-width: 400px;
 }
+
+/* Foutmelding */
+.error-message {
+    color: red;
+    background-color: #FFE6E6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
