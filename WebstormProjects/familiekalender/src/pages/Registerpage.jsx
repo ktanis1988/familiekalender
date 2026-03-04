@@ -5,6 +5,9 @@ import "./Registerpage.css";
 function Registerpage() {
     const navigate = useNavigate();
 
+    console.log("API Key:", import.meta.env.VITE_API_KEY);
+    console.log("API URL:", import.meta.env.VITE_API_URL);
+
     const [naam, setNaam] = useState("");
     const [gezinsnaam, setGezinsnaam] = useState("");
     const [email, setEmail] = useState("");
@@ -12,7 +15,7 @@ function Registerpage() {
 
     const [error, setError] = useState("");
 
-    function handleRegisteren(e) {
+    async function handleRegisteren(e) {
         e.preventDefault();
         console.log("Registreren knop geklikt");
 
@@ -35,10 +38,37 @@ function Registerpage() {
             wachtwoord: wachtwoord,
         });
 
-        setError("");
+        console.log("Bezig met registreren via API...");
 
-        /* Hier maak ik later de API call en validatie */
-        navigate('/calendar');
+        const apiUrl = `${import.meta.env.VITE_API_URL}/api/users`;
+        console.log("API URL:", apiUrl);
+
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'novi-education-project-id': import.meta.env.VITE_API_KEY,
+            },
+
+            body: JSON.stringify({
+                username: naam,
+                email: email,
+                password: wachtwoord,
+                familyName: gezinsnaam,
+            }),
+        });
+
+        const data = await response.json();
+        console.log("Response van API:", data);
+
+        if (response.ok) {
+            console.log("Registratie gelukt!");
+            setError("");
+            navigate('/');
+        } else {
+            console.log("Registratie mislukt:", data);
+            setError("Er ging iets mis bij het registreren");
+        }
     }
 
     function gaNaarInloggen(){
@@ -107,4 +137,3 @@ function Registerpage() {
 }
 
 export default Registerpage;
-
