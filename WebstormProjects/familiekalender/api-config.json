@@ -1,0 +1,84 @@
+{
+  "collections": [
+  {
+    "name":  "users",
+    "fields": [
+      {
+        "name": "username",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "email",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "password",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "familyName",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "role",
+        "type": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "name": "activities",
+    "fields": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "date",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "time",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "category",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "assignedTo",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "required": false
+      },
+      {
+        "name": "createdBy",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "familyName",
+        "type": "string",
+        "required": true
+      },
+      {
+        "name": "urgent",
+        "type": "boolean",
+        "required": false
+      }
+    ]
+  }
+ ]
+}
