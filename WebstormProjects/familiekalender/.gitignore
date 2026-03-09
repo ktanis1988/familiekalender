@@ -53,3 +53,8 @@ dist-ssr
 /vv-vrc-frontend/
 /Eindopdracht_KommerTanis/
 /Google Drive
+
+#Environment Variabelen
+.env
+.env.local
+.env.*.local
