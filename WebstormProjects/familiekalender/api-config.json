@@ -22,13 +22,14 @@
         "name": "familyName",
         "type": "string",
         "required": true
-      },
-      {
-        "name": "role",
-        "type": "string",
-        "required": false
       }
-    ]
+    ],
+    "permissions": {
+      "GET": ["ROLE_USER", "ROLE_ADMIN"],
+      "POST": [],
+      "PATCH": ["ROLE_USER", "ROLE_ADMIN"],
+      "DELETE": ["ROLE_ADMIN"]
+    }
   },
   {
     "name": "activities",
@@ -78,7 +79,14 @@
         "type": "boolean",
         "required": false
       }
-    ]
+     ],
+    "permissions": {
+      "GET": ["ROLE_USER", "ROLE_ADMIN"],
+      "POST": ["ROLE_USER", "ROLE_ADMIN"],
+      "PUT": ["ROLE_USER", "ROLE_ADMIN"],
+      "PATCH": ["ROLE_USER", "ROLE_ADMIN"],
+      "DELETE": ["ROLE_ADMIN"]
+    }
   }
  ]
 }
