@@ -11,11 +11,11 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/homepage" element={<Homepage />} />
+                <Route path="/" element={<Homepage />} />
                 <Route path="/register" element={<Registerpage />} />
                 <Route path="/calendar" element={<Calendarpage />} />
                 <Route path="/addactivity" element={<Addactivitypage />} />
-                <Route path="/dayview" elememnt={<Dayviewpage />} />
+                <Route path="/dayview" element={<Dayviewpage />} />
             </Routes>
         </Router>
     );
