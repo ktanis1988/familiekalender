@@ -48,47 +48,47 @@
     background-color: #F2F2F2;
 }
 
-    .form-container input:focus {
-        outline: none;
-        border-color: #A55353;
-    }
+.form-container input:focus {
+    outline: none;
+    border-color: #A55353;
+}
 
-    /* Basisstijl knoppen */
-    .button {
-        width: 100%;
-        max-width: 400px;
-        padding: 12px;
-        font-size: 16px;
-        background-color: #A55353;
-        color: white;
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
-        margin-bottom: 15px;
-    }
+/* Basisstijl knoppen */
+.button {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #A55353;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
 
-    /* Login knop */
-    .button.primary {
-        max-width: 400px;
-    }
+/* Login knop */
+.button.primary {
+    max-width: 400px;
+}
 
-    /* Registreer knop */
-    .button.secondary {
-        max-width: 350px;
-    }
+/* Registreer knop */
+.button.secondary {
+    max-width: 350px;
+}
 
-    /* Wachtwoord vergeten knop */
-    .button.tertiary {
-        max-width: 300px;
-    }
+/* Wachtwoord vergeten knop */
+.button.tertiary {
+    max-width: 300px;
+}
 
 /* Foutmelding */
 .error-message {
-        color: red;
-        background-color: #FFE6E6;
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 15px;
-        font-weight: bold;
-        border: 1px solid #FF0000;
-    }
+    color: red;
+    background-color: #FFE6E6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    border: 1px solid #FF0000;
+}

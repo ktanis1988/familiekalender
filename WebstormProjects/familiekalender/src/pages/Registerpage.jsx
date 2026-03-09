@@ -5,15 +5,12 @@ import "./Registerpage.css";
 function Registerpage() {
     const navigate = useNavigate();
 
-    console.log("API Key:", import.meta.env.VITE_API_KEY);
-    console.log("API URL:", import.meta.env.VITE_API_URL);
-
     const [naam, setNaam] = useState("");
     const [gezinsnaam, setGezinsnaam] = useState("");
     const [email, setEmail] = useState("");
     const [wachtwoord, setWachtwoord] = useState("");
-
     const [error, setError] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     async function handleRegisteren(e) {
         e.preventDefault();
@@ -25,49 +22,53 @@ function Registerpage() {
             return;
         }
 
-        if (wachtwoord.length < 6){
+        if (wachtwoord.length < 6) {
             setError("Wachtwoord moet minimaal 6 tekens zijn!");
             console.log("Error: wachtwoord te kort");
             return
         }
 
-        console.log("Formulier data:", {
-            naam: naam,
-            gezinsnaam: gezinsnaam,
-            email: email,
-            wachtwoord: wachtwoord,
-        });
+        setIsLoading(true);
+        setError("");
 
-        console.log("Bezig met registreren via API...");
+        try {
+            console.log("STAP 1: Registeren via API...");
+            const registerUrl = `${import.meta.env.VITE_API_URL}/api/users`;
+            console.log("Register URL:", registerUrl);
 
-        const apiUrl = `${import.meta.env.VITE_API_URL}/api/users`;
-        console.log("API URL:", apiUrl);
+            const registerResponse = await fetch(registerUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "novi-education-project-id": import.meta.env.VITE_API_KEY,
+                },
+                body: JSON.stringify({
+                    username: naam,
+                    email: email,
+                    password: wachtwoord,
+                    familyName: gezinsnaam,
+                    roles: ["ROLE_USER"],
+                }),
+            });
 
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'novi-education-project-id': import.meta.env.VITE_API_KEY,
-            },
+            const registerData = await registerResponse.json();
+            console.log("Registratie response:", registerData);
 
-            body: JSON.stringify({
-                username: naam,
-                email: email,
-                password: wachtwoord,
-                familyName: gezinsnaam,
-            }),
-        });
+            if (!registerResponse.ok) {
+                throw new Error(registerData.message || "Registratie mislukt");
+            }
 
-        const data = await response.json();
-        console.log("Response van API:", data);
-
-        if (response.ok) {
             console.log("Registratie gelukt!");
-            setError("");
-            navigate('/');
-        } else {
-            console.log("Registratie mislukt:", data);
-            setError("Er ging iets mis bij het registreren");
+
+            localStorage.setItem('familyName_' + email, gezinsnaam);
+            console.log("Gezinsnaam opgeslagen voor:", email);
+
+            navigate("/");
+        } catch (error) {
+        console.error("Error tijdens registratie:", error);
+        setError(error.message || "Er ging iets mis bij het registreren");
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -126,11 +127,13 @@ function Registerpage() {
                     onChange={ (e) => setWachtwoord(e.target.value)}
                 />
 
-                <button type="submit" className="button primary">Account aanmaken</button>
+                <button type="submit" className="button primary" disabled={isLoading}> {isLoading ? "Bezig met aanmaken..." : "Account aanmaken"}
+                </button>
 
                 <p className="login-link">Heb je al een account? Klik hier om in te loggen</p>
 
-                <button type="button" className="button secondary" onClick={gaNaarInloggen}>Inloggen</button>
+                <button type="button" className="button secondary" onClick={gaNaarInloggen} disabled={isLoading}
+                >Inloggen</button>
             </form>
         </div>
     );
