@@ -7,10 +7,9 @@ function Homepage() {
 
     const [email, setEmail] = useState("");
     const [wachtwoord, setWachtwoord] = useState("");
-
     const [error, setError] = useState("");
 
-    function handleInloggen(e) {
+    async function handleInloggen(e) {
         e.preventDefault();
         console.log("Inloggen knop geklikt");
 
@@ -26,14 +25,70 @@ function Homepage() {
             return;
         }
 
-        console.log("Inlog data:", {
-            email: email,
-            wachtwoord: wachtwoord
+        console.log("Bezig met inloggen via API...");
+
+        const apiUrl = `${import.meta.env.VITE_API_URL}/api/login`;
+        console.log("API URL:", apiUrl);
+
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'novi-education-project-id': import.meta.env.VITE_API_KEY,
+            },
+            body: JSON.stringify({
+                email: email,
+                password: wachtwoord,
+            }),
         });
 
-        setError("");
+        const data = await response.json();
+        console.log("Response van API:", data);
 
-        navigate('/calendar');
+        if (response.ok) {
+            console.log("Inloggen gelukt!");
+
+            localStorage.setItem('token', data.token);
+
+            const tokenParts = data.token.split('.');
+            const tokenData = JSON.parse(atob(tokenParts[1]));
+            const userId = tokenData.userId;
+
+            console.log("Ophalen volledige user data voor userId:", userId);
+
+            const userResponse = await fetch(
+                `${import.meta.env.VITE_API_URL}/api/users/${userId}`,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'novi-education-project-id': import.meta.env.VITE_API_KEY,
+                        'Authorization': `Bearer ${data.token}`
+                    }
+                }
+
+            );
+
+            const userData = await userResponse.json();
+            console.log("Volledige user data:", userData);
+
+            const savedFamilyName= localStorage.getItem('familyName_' + email);
+
+            if (savedFamilyName) {
+                console.log("Gezinsnaam gevonden:", savedFamilyName);
+                userData.familyName = savedFamilyName;
+            } else {
+                console.log("Geen gezinsnaam gevonden");
+                userData.familyName= "Onbekend";
+            }
+
+            localStorage.setItem('user', JSON.stringify(userData));
+
+            setError("");
+            navigate('/calendar');
+        } else {
+            console.log("Inloggen mislukt:", data);
+            setError("Onjuiste inloggevens!");
+        }
     }
 
     function gaNaarRegistreren() {
