@@ -5,6 +5,7 @@ import Registerpage from "./pages/Registerpage";
 import Calendarpage from "./pages/Calendarpage";
 import Addactivitypage from "./pages/Addactivitypage";
 import Dayviewpage from "./pages/Dayviewpage";
+import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.css";
 
 function App() {
@@ -13,9 +14,33 @@ function App() {
             <Routes>
                 <Route path="/" element={<Homepage />} />
                 <Route path="/register" element={<Registerpage />} />
-                <Route path="/calendar" element={<Calendarpage />} />
-                <Route path="/addactivity" element={<Addactivitypage />} />
-                <Route path="/dayview" element={<Dayviewpage />} />
+
+                <Route
+                    path="/calendar"
+                    element={
+                    <ProtectedRoute>
+                        <Calendarpage />
+                    </ProtectedRoute>
+                }
+                />
+
+                <Route
+                    path="/addactivity"
+                    element={
+                    <ProtectedRoute>
+                        <Addactivitypage />
+                    </ProtectedRoute>
+                }
+                />
+
+                <Route
+                    path="/dayview/:date"
+                    element={
+                    <ProtectedRoute>
+                        <Dayviewpage />
+                    </ProtectedRoute>
+                }
+                />
             </Routes>
         </Router>
     );

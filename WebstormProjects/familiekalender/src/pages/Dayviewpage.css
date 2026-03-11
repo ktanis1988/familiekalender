@@ -1,4 +1,4 @@
-/* Container */
+/* Dagweergave */
 
 .dayview-container {
     background-color: #FFF1E6;
@@ -7,80 +7,178 @@
 }
 
 /* Header met datum en navigatie */
-
 .dayview-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 16px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .dayview-header h1 {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: bold;
     color: #333333;
+    margin: 0;
+    text-align: center;
+    padding: 0 10px;
 }
 
 .nav-arrow {
     background-color: transparent;
     border: none;
-    font-size: 32px;
+    font-size: 18px;
     color:#333333;
     cursor: pointer;
 }
 
-/* Tijdslots */
-
-.timeslots {
-    max-width: 800px;
-    margin: 0 auto 100px auto;
+.nav-arrow:hover {
+    color: #A55353;
 }
 
-.timeslot {
-    display: flex;
-    align-items: center;
-    background-color: #E8DDD4;
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-}
-
-.time {
-    font-size: 14px;
-    color: #333333;
-    min-width: 150px;
-}
-
-.activity {
-    font-size: 16px;
-    color: #333333;
-    margin-left: 30px;
-}
-
-/* Opslaan knop */
-
-.save-button {
+/* Terug knop */
+.back-button {
     display: block;
     width: 100%;
-    max-width: 300px;
-    margin: 30px auto;
-    padding: 15px;
-    font-size: 18px;
-    background-color: #A55353;
+    max-width: 220px;
+    margin: 0 auto 18px auto;
+    padding: 10px 12px;
+    font-size: 15px;
+    background-color: #6B7280;
     color: white;
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #4B5563;
+}
+
+/* Status */
+.loading-message,
+.error-message,
+.no-activities {
+    text-align: center;
+    margin: 16px auto;
+    max-width: 900px;
+}
+
+.error-message {
+    color: #B91C1C;
+    background-color: #FFE6E6;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    border: 1px solid #EF4444;
+}
+
+/* Lijst met activiteiten */
+.activities-list {
+    max-width: 900px;
+    margin: 0 auto 100px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.activity-card {
+    background-color: #F5F5F5;
+    border: 1px solid #E1D5CB;
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.activity-info h3 {
+    margin: 0 0 6px 0;
+    color: #A55353;
+}
+
+.activity-time {
+    margin: 0 0 8px 0;
+    color: #333333;
+    font-weight: 600;
+}
+
+.activity-description {
+    margin: 0 0 8px 0;
+    color: #333333;
+}
+
+.activity-assigned {
+    margin: 8px 0 0 0;
+    color: #333333;
+    font-size: 14px;
+}
+
+/* Categorie + Urgent */
+.activity-category {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    background-color: #E8DDD4;
+    color: #333333;
+}
+
+.urgent-badge {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    background-color: #FF4444;
+    color: white;
+}
+
+/* Buttons rechts */
+.activity-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 120px;
+}
+
+.edit-button,
+.delete-button {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+}
+
+.edit-button {
+    background-color: #7C3AED;
+}
+
+.edit-button:hover {
+    background-color: #6D28D9;
+}
+
+.delete-button {
+    background-color: #EF4444;
+}
+
+.delete-button:hover {
+    background-color: #DC2626;
 }
 
 /* Plus knop rechtsonder */
 
 .add-button {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    width: 58px;
+    height: 58px;
     background-color: #A55353;
     color: white;
     font-size: 32px;
@@ -90,4 +188,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.add-button:hover {
+    background-color: #8F4444;
+}
+
+/* Responsief */
+@media (max-width: 600px) {
+    .activity-card {
+        flex-direction: column;
+    }
+
+    .activity-buttons {
+        flex-direction: row;
+        min-width: auto;
+    }
+
+    .dayview-header h1 {
+        font-size: 18px;
+    }
 }

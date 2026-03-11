@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 import "./Homepage.css";
+import Button from "../components/Button";
+import FormInput from "../components/FormInput";
+import Message from "../components/Message";
 
 function Homepage() {
     const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
 
     const [email, setEmail] = useState("");
     const [wachtwoord, setWachtwoord] = useState("");
@@ -30,25 +35,29 @@ function Homepage() {
         const apiUrl = `${import.meta.env.VITE_API_URL}/api/login`;
         console.log("API URL:", apiUrl);
 
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'novi-education-project-id': import.meta.env.VITE_API_KEY,
-            },
-            body: JSON.stringify({
-                email: email,
-                password: wachtwoord,
-            }),
-        });
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'novi-education-project-id': import.meta.env.VITE_API_KEY,
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: wachtwoord,
+                }),
+            });
 
-        const data = await response.json();
-        console.log("Response van API:", data);
+            const data = await response.json();
+            console.log("Response van API:", data);
 
-        if (response.ok) {
+            if (!response.ok) {
+                console.log("Inloggen mislukt:", data);
+                setError("Onjuiste inloggegevens!");
+                return;
+            }
+
             console.log("Inloggen gelukt!");
-
-            localStorage.setItem('token', data.token);
 
             const tokenParts = data.token.split('.');
             const tokenData = JSON.parse(atob(tokenParts[1]));
@@ -63,31 +72,31 @@ function Homepage() {
                         'Content-Type': 'application/json',
                         'novi-education-project-id': import.meta.env.VITE_API_KEY,
                         'Authorization': `Bearer ${data.token}`
-                    }
-                }
-
-            );
+                    },
+                });
 
             const userData = await userResponse.json();
             console.log("Volledige user data:", userData);
 
-            const savedFamilyName= localStorage.getItem('familyName_' + email);
+            const savedFamilyName = localStorage.getItem('familyName_' + email);
 
             if (savedFamilyName) {
-                console.log("Gezinsnaam gevonden:", savedFamilyName);
+                console.log("Gezinsnaam gevonden in localStorage:", savedFamilyName);
                 userData.familyName = savedFamilyName;
+            } else if (userData.familyName) {
+                console.log("Gezinsnaam komt uit API:", userData.familyName);
             } else {
-                console.log("Geen gezinsnaam gevonden");
-                userData.familyName= "Onbekend";
+                console.log("Geen gezinsnaam gevonden, fallback naar Onbekend");
+                userData.familyName = "Onbekend";
             }
 
-            localStorage.setItem('user', JSON.stringify(userData));
+            login(data.token, userData);
 
             setError("");
-            navigate('/calendar');
-        } else {
-            console.log("Inloggen mislukt:", data);
-            setError("Onjuiste inloggevens!");
+            navigate("/calendar");
+        } catch (err) {
+            console.error("Error tijdens inloggen:", err);
+            setError("Er ging iets mis bij het inloggen");
         }
     }
 
@@ -98,7 +107,6 @@ function Homepage() {
 
     function wachtwoordVergeten () {
         console.log("Wachtwoord vergeten geklikt")
-        /* Pagina maken voor wachtwoord reset */
         alert("Deze functie maak ik later!");
     }
 
@@ -107,33 +115,30 @@ function Homepage() {
             <h1>Welkom bij de Familiekalender!</h1>
             <p>Log in voor je persoonlijke omgeving!</p>
 
-            <form onSubmit={handleInloggen}>
+            <form className="form-container" onSubmit={handleInloggen}>
+                <Message type="error">{error}</Message>
 
-                {error && <p className="error-message">{error}</p>}
-
-                <label htmlFor="email">E-mailadres:</label><br />
-                <input
-                    type="email"
+                <FormInput
+                    label="E-mailadres:"
                     id="email"
-                    name="email"
+                    type="email"
                     placeholder="Voer je e-mailadres in"
                     value={email}
                     onChange={ (e) => setEmail(e.target.value)}
-                /><br /><br />
+                />
 
-                <label htmlFor="password">Wachtwoord:</label><br />
-                <input
-                    type="password"
+                <FormInput
+                    label="Wachtwoord:"
                     id="password"
                     name="password"
                     placeholder="Voer je wachtwoord in"
                     value={wachtwoord}
                     onChange={ (e) => setWachtwoord(e.target.value)}
-                /><br /><br />
+                />
 
-                <button type="submit">Inloggen</button><br />
-                <button type="button" onClick={gaNaarRegistreren}>Registreren</button><br />
-                <button type="button" onClick={wachtwoordVergeten}>Wachtwoord vergeten?</button><br />
+                <Button type="submit" variant="primary">Inloggen</Button>
+                <Button type="button" variant="secondary" onClick={gaNaarRegistreren}>Registreren</Button>
+                <Button type="button" variant="tertiary" onClick={wachtwoordVergeten}>Wachtwoord vergeten?</Button>
             </form>
         </div>
     );

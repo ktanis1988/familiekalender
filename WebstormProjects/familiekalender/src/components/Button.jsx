@@ -1,0 +1,25 @@
+import React from "react";
+
+function Button({
+                    type = "button",
+                    variant = "primary", // "primary" | "secondary" | "tertiary"
+                    className = "",
+                    disabled = false,
+                    onClick,
+                    children,
+                }) {
+    const variantClass = variant === "primary" ? "" : variant;
+
+    return (
+        <button
+            type={type}
+            className={'button ${variantClass} &{className}'.trim()}
+            disabled={disabled}
+            onClick={onClick}
+            >
+            {children}
+        </button>
+    );
+}
+
+export default Button;

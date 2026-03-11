@@ -2,46 +2,49 @@
 
 .homepage-container {
     background-color: #FFF1E6;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 24px 16px;
 }
 
 /* Hoofdtitel */
 .homepage-container h1 {
-    font-size: 45px;
+    font-size: 40px;
     font-weight: bold;
     color: #333333;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
 }
 
 /* Subtitel */
 .homepage-container p {
     font-style: italic;
-    font-size: 19px;
+    font-size: 18px;
     color: #666666;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
 }
 
-/* Kalendericoon */
-.icon {
-    font-size: 30px;
-    margin-right: 10px;
-}
-
-/* Formulierstijl */
+/* Form*/
 .form-container {
     width: 100%;
     max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+.form-container label {
+    font-weight: 600;
+    color: #333333;
 }
 
 .form-container input {
     width: 100%;
     padding: 12px;
-    margin-bottom: 20px;
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -56,7 +59,6 @@
 /* Basisstijl knoppen */
 .button {
     width: 100%;
-    max-width: 400px;
     padding: 12px;
     font-size: 16px;
     background-color: #A55353;
@@ -64,22 +66,28 @@
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    margin-bottom: 15px;
+    margin-top: 6px;
 }
 
-/* Login knop */
-.button.primary {
-    max-width: 400px;
+.button:hover {
+    background-color: #8F4444;
 }
 
-/* Registreer knop */
+/* Kleine verschillen per knop */
 .button.secondary {
-    max-width: 350px;
+    background-color: #7C3AED;
 }
 
-/* Wachtwoord vergeten knop */
+.button.secondary:hover {
+    background-color: #6D28D9;
+}
+
 .button.tertiary {
-    max-width: 300px;
+    background-color: #6B7280;
+}
+
+.button.tertiary:hover {
+    background-color: #4B5563;
 }
 
 /* Foutmelding */
@@ -87,8 +95,7 @@
     color: red;
     background-color: #FFE6E6;
     padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
+    border-radius: 6px;
     font-weight: bold;
     border: 1px solid #FF0000;
 }

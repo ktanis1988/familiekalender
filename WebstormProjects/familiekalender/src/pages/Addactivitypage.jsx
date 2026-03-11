@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import "./Addactivitypage.css";
+import Message from "../components/Message";
+import FormInput from "../components/FormInput";
+import Button from "../components/Button";
 
 function Addactivitypage() {
     const navigate = useNavigate();
@@ -176,12 +179,13 @@ function Addactivitypage() {
 
             <form className="addactivity-form" onSubmit={handleOpslaan}>
 
-                {error && <p className="error-message">{error}</p>}
+                <Message type="error">{error}</Message>
 
 
                 <div className="form-field">
-                    <label>Titel *</label>
-                    <input
+                    <FormInput
+                        label="Titel: "
+                        id="title"
                         type="text"
                         placeholder="Naam activiteit"
                         value={titel}
@@ -190,8 +194,9 @@ function Addactivitypage() {
                 </div>
 
                 <div className="form-field">
-                    <label>Datum *</label>
-                    <input
+                    <FormInput
+                        label="Datum: "
+                        id="date"
                         type="date"
                         value={datum}
                         onChange={ (e) => setDatum(e.target.value)}
@@ -199,8 +204,9 @@ function Addactivitypage() {
                 </div>
 
                 <div className="form-field">
-                    <label>Tijd *</label>
-                    <input
+                    <FormInput
+                        label="Tijd: "
+                        id="time"
                         type="time"
                         value={tijd}
                         onChange={ (e) => setTijd(e.target.value)}
@@ -208,8 +214,9 @@ function Addactivitypage() {
                 </div>
 
                 <div className="form-field">
-                    <label>Categorie</label>
-                    <input
+                    <FormInput
+                        label="Categorie: "
+                        id="category"
                         type="text"
                         placeholder='"werk", "school", "etcetera"'
                         value={categorie}
@@ -218,8 +225,9 @@ function Addactivitypage() {
                 </div>
 
                 <div className="form-field">
-                    <label>Toewijzen</label>
-                    <input
+                    <FormInput
+                        label="Toewijzen: "
+                        id="assignedTo"
                         type="text"
                         placeholder="persoon selectie"
                         value={persoon}
@@ -244,14 +252,26 @@ function Addactivitypage() {
                             checked={urgent}
                             onChange={ (e) => setUrgent(e.target.checked)}
                             />
-                            {''}Urgent
+                            Urgent
                     </label>
                 </div>
 
-                <button type="submit" className="submit-button" disabled={isLoading}>
+                <Button
+                    type="submit"
+                    variant="primary"
+                    className="submit-button"
+                    disabled={isLoading}
+                >
                     {isLoading ? 'Bezig...' : (isEditMode ? 'Bijwerken' : 'Opslaan')}
-                </button>
-                <button type="button" className="cancel-button" onClick={handleAnnuleren}>Annuleren</button>
+                </Button>
+                <Button
+                    type="button"
+                    variant="secondary"
+                    className="cancel-button"
+                    onClick={handleAnnuleren}
+                >
+                    Annuleren
+                </Button>
             </form>
         </div>
     );

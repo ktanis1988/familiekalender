@@ -1,52 +1,51 @@
-/* Algemeen */
+/* Register pagina */
 
 .registerpage-container {
     background-color: #FFF1E6;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 24px 16px;
 }
 
-/* Hoofdtitel */
-
+/* Titels */
 .registerpage-container h1 {
-    font-size: 45px;
+    font-size: 40px;
     font-weight: bold;
-    color: #666666;
-    margin-bottom: 10px;
+    color: #333333;
+    margin: 0 0 10px 0;
 }
-
-/* Subtitel */
 
 .registerpage-container p {
     font-style: italic;
     font-size: 18px;
     color: #666666;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
 }
 
-/* Formulierstijl */
-
+/* Formulier */
 .register-form-container {
-    widthww: 100%;
+    width: 100%;
     max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
 }
 
 .register-form-container label {
     display: block;
-    text-align: left;
     font-size: 14px;
     color: #333333;
-    margin-bottom: 5px;
-    margin-bottom: 10px;
+    margin-top: 6px;
 }
 
 .register-form-container input {
     width: 100%;
-    paddding: 12px;
-    margin-bottom: 20px;
+    padding: 12px;
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -58,19 +57,24 @@
     border-color: #A55353;
 }
 
-/* Tekst tussen knoppen */
-
+/* Klik-tekst */
 .login-link {
     font-size: 14px;
     color: #333333;
-    margin: 20px 0 10px 0;
+    margin: 10px 0 0 0;
+    font-style: normal;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.login-link:hover {
+    color: #A55353;
 }
 
 /* Basisstijl knoppen */
-
 .button {
     width: 100%;
-    max-width: 400px;
     padding: 12px;
     font-size: 16px;
     background-color: #A55353;
@@ -78,19 +82,16 @@
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    margin-bottom: 15px;
+    margin-top: 6px;
 }
 
-/* Account aanmaken knop */
-
-.button.primary {
-    max-width: 400px;
+.button:hover {
+    background-color: #8F4444;
 }
 
-/* Inloggen knop */
-
-.button.secondary {
-    max-width: 400px;
+.button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
 }
 
 /* Foutmelding */
@@ -98,8 +99,8 @@
     color: red;
     background-color: #FFE6E6;
     padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
+    border-radius: 6px;
     font-weight: bold;
     border: 1px solid #FF0000;
+    text-align: center;
 }

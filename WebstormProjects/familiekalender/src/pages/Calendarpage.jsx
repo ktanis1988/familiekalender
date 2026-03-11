@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, Activity} from "react";
 import { useNavigate } from "react-router-dom";
 import "./Calendarpage.css";
+import PageHeader from "../components/PageHeader";
+import Message from "../components/Message.jsx";
+import ActivityCard from "../components/ActivityCard";
+import FloatingAddButton from "../components/FloatingAddButton.jsx";
 
 function Calendarpage () {
     const navigate = useNavigate();
@@ -115,17 +119,17 @@ function Calendarpage () {
         const dateString = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 
         console.log("Dag geklikt:", dateString);
-        navigate(`/dayview?date=${dateString}`);
+        navigate(`/dayview/${dateString}`);
     }
 
-    function vorigeWeek() {
-        console.log("Vorige week knop geklikt");
+    function vorigeMaand() {
+        console.log("Vorige maand knop geklikt");
         const newDate = new Date(currentDate);
         newDate.setMonth(newDate.getMonth() - 1);
         setCurrentDate(newDate);
     }
 
-    function volgendeWeek() {
+    function volgendeMaand() {
         console.log("Volgende week knop geklikt");
         const newDate = new Date(currentDate);
         newDate.setMonth(newDate.getMonth() + 1);
@@ -136,16 +140,24 @@ function Calendarpage () {
 
     return (
         <div className="calendar-container">
-            <header className="calendar-header">
-                <button className="nav-button left" onClick={vorigeWeek}>Vorige</button>
-                <h1>{getMonthName()} {currentDate.getFullYear()}</h1>
-                <button className="nav-button right" onClick={volgendeWeek}>Volgende</button>
-            </header>
+            <PageHeader className="calendar-header"
+                        left={
+                <button className="nav-button left" onClick={vorigeMaand}>
+                    Vorige
+                </button>
+            }
+            title={`${getMonthName()} ${currentDate.getFullYear()}`}
+            right={
+                <button className="nav-button right" onClick={volgendeMaand}>
+                    Volgende
+                </button>
+            }
+            />
 
-            {error && <p className="error-message">{error}</p>}
+            <Message type="error">{error}</Message>
 
             {isLoading ? (
-                <p className="loading-message">Bezig met laden...</p>
+                <Message type="loading">Bezig met laden...</Message>
             ) : (
                 <>
                     <div className="calendar-grid">
@@ -198,18 +210,12 @@ function Calendarpage () {
                     <div className="activities-overview">
                         <h2>Alle geplande activiteiten</h2>
                         {activities.length === 0 ? (
-                            <p> Nog geen activiteiten gepland. Voeg er een toe!</p>
+                            <Message type="empty"> Nog geen activiteiten gepland. Voeg er een toe!
+                            </Message>
                         ) : (
                             <div className="activities-list">
                                 {activities.map(activity => (
-                                    <div key={activity.id} className="activity-card">
-                                        <h3>{activity.title}</h3>
-                                        <p>{activity.date}</p>
-                                        <p>{activity.time}</p>
-                                        <p>{activity.assignedTo}</p>
-                                        <p>{activity.category}</p>
-                                        {activity.urgent && <span className="urgent-badge"> Urgent</span>}
-                                    </div>
+                                    <ActivityCard key={activity.id} activity={activity} />
                                 ))}
                             </div>
                         )}
@@ -217,7 +223,7 @@ function Calendarpage () {
                 </>
             )}
 
-            <button className="add-button" onClick={gaNaarActiviteitToevoegen}>+</button>
+            <FloatingAddButton  onClick={gaNaarActiviteitToevoegen} />
         </div>
     );
 }

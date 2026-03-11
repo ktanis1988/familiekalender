@@ -10,7 +10,6 @@
 }
 
 /* Header met navigatieknoppen */
-
 .calendar-header {
     display: flex;
     justify-content: space-between;
@@ -24,12 +23,13 @@
     font-size: 32px;
     font-weight: bold;
     color: #333333;
+    margin: 0;
 }
 
 .nav-button {
     background-color: transparent;
     border: none;
-    font-size: 32px;
+    font-size: 26px;
     color: #333333;
     cursor: pointer;
     transition: color 0.3s;
@@ -37,6 +37,104 @@
 
 .nav-button:hover {
     color: #A55353;
+}
+
+/* Laden en error berichten */
+.loading-message,
+.error-message {
+    text-align: center;
+    padding: 20px 10px;
+    color: #A55353;
+    font-size: 18px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Grid voor de kalender */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 1200px;
+    background-color: #E8D5C4;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+/* Headers voor de dagen van de week */
+.day-header {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+    text-align: center;
+    padding: 10px;
+    background-color: #F5F5F5;
+    border-radius: 8px;
+}
+
+/* Individuele cellen voor data */
+.calendar-cell {
+    background-color: #FFF1E6;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    height: 80px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    position: relative;
+    padding: 6px;
+}
+
+.calendar-cell:hover {
+    background-color: #F5E5D5;
+}
+
+/* Lege cellen (voor begin van de maand) */
+.calendar-cell.empty {
+    background-color: transparent;
+    border: none;
+    cursor: default;
+}
+
+/* Vandaag */
+.calendar-cell.today {
+    border: 2px solid #A55353;
+}
+
+/* Dagnummer */
+.day-number {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+}
+
+/* Dots voor activiteiten */
+.activity-dots {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    right: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.activity-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #7C3AED; /* normale activiteit */
+}
+
+.activity-dot.urgent {
+    background-color: #FF4444; /* urgent */
+}
+
+.more-activities {
+    font-size: 12px;
+    color: #333333;
+    margin-left: 4px;
 }
 
 /* Activiteiten overzicht */
@@ -65,26 +163,20 @@
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.activity-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .activity-card h3 {
     color: #A55353;
-    margin-bottom: 15px;
+    margin: 0 0 12px 0;
     font-size: 20px;
     font-weight: bold;
 }
 
 .activity-card p {
     color: #333333;
-    margin: 8px 0;
+    margin: 6px 0;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
 .urgent-badge {
@@ -97,59 +189,8 @@
     display: inline-block;
 }
 
-/* Laden en error berichten */
-.loading-message,
-.error-message {
-    text-align: center;
-    padding: 40px 20px;
-    color: #A55353;
-    font-size: 18px;
-    width: 100%;
-    max-width: 1200px;
-}
-
-/* Grid voor de kalender */
-
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    width: 100%;
-    max-width: 1200px;
-    background-color: #E8D5C4;
-    padding: 20px;
-    border-radius: 12px;
-}
-
-/* Headers voor de dagen van de week */
-
-.day-header {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333333;
-    text-align: center;
-    padding: 10px;
-    background-color: #F5F5F5;
-    border-radius: 8px;
-}
-
-/* Individuele cellen voor data */
-
-.calendar-cell {
-    background-color: #FFF1E6;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    height: 80px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.calendar-cell:hover {
-    background-color: #F5E5D5;
-}
 
 /* Ronde knop rechtsonder */
-
 .add-button {
     position: fixed;
     bottom: 30px;
@@ -185,11 +226,11 @@
     }
 
     .calendar-header h1 {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .nav-button {
-        font-size: 24px;
+        font-size: 20px;
     }
 
     .calendar-grid {
@@ -199,13 +240,28 @@
 
     .day-header {
         font-size: 12px;
-        padding: 5px;
+        padding: 6px;
     }
 
     .calendar-cell {
         height: 60px;
+        padding: 4px;
+    }
+
+    .activity-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .add-button {
+        width: 54px;
+        height: 54px;
+        font-size: 28px;
+        right: 18px;
+        bottom: 18px;
     }
 }
+
 
 
 

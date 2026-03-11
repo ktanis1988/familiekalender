@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Registerpage.css";
+import Button from "../components/Button";
+import FormInput from "../components/FormInput";
+import Message from "../components/Message";
 
 function Registerpage() {
     const navigate = useNavigate();
@@ -84,56 +87,51 @@ function Registerpage() {
 
             <form className="register-form-container" onSubmit={handleRegisteren}>
 
-                {error && <p className="error-message">{error}</p>}
+                <Message type="error">{error}</Message>
 
-
-                <label htmlFor="name">Naam:</label>
-                <input
-                    type="text"
+                <FormInput
+                    label="Naam:"
                     id="name"
-                    name="name"
+                    type="text"
                     placeholder="Naam:"
                     value={naam}
                     onChange={ (e) => setNaam(e.target.value)}
                 />
 
-                <label htmlFor="familyname">Gezinsnaam:</label>
-                <input
-                    type="text"
+                <FormInput
+                    label="Gezinsnaam:"
                     id="familyname"
-                    name="familyname"
+                    type="text"
                     placeholder="Gezinsnaam:"
                     value={gezinsnaam}
                     onChange={ (e) => setGezinsnaam(e.target.value)}
                 />
 
-                <label htmlFor="email">E-mailadres:</label>
-                <input
-                    type="email"
+                <FormInput
+                    label="E-mailadres:"
                     id="email"
-                    name="email"
+                    type="email"
                     placeholder="E-mailadres:"
                     value={email}
                     onChange={ (e) => setEmail(e.target.value)}
                 />
 
-                <label htmlFor="password">Wachtwoord:</label>
-                <input
-                    type="password"
+                <FormInput
+                    label="Wachtwoord:"
                     id="password"
-                    name="password"
+                    type="password"
                     placeholder="Wachtwoord:"
                     value={wachtwoord}
                     onChange={ (e) => setWachtwoord(e.target.value)}
                 />
 
-                <button type="submit" className="button primary" disabled={isLoading}> {isLoading ? "Bezig met aanmaken..." : "Account aanmaken"}
-                </button>
+                <Button type="submit" variant="primary" disabled={isLoading}> {isLoading ? "Bezig met aanmaken..." : "Account aanmaken"}
+                </Button>
 
-                <p className="login-link">Heb je al een account? Klik hier om in te loggen</p>
+                <p className="login-link" onClick={gaNaarInloggen}>Heb je al een account? Klik hier om in te loggen</p>
 
-                <button type="button" className="button secondary" onClick={gaNaarInloggen} disabled={isLoading}
-                >Inloggen</button>
+                <Button type="button" variant="secondary" onClick={gaNaarInloggen} disabled={isLoading}
+                >Inloggen</Button>
             </form>
         </div>
     );
