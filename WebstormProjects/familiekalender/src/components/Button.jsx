@@ -13,7 +13,7 @@ function Button({
     return (
         <button
             type={type}
-            className={'button ${variantClass} &{className}'.trim()}
+            className={`buton ${variantClass} ${className}`}
             disabled={disabled}
             onClick={onClick}
             >
