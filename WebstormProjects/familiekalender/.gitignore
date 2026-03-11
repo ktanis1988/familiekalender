@@ -1,60 +1,30 @@
-# Logs
+# Node & build
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Logbestanden
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+.vscode/
+.idea/
 .DS_Store
+
+# Windows Visual Studio
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-# Systeembestanden en gebruikersinstellingen
-.CFUserTextEncoding
-.ssh/
-.gitconfig
-.zshrc
-.zprofile
-.zsh_history
-.zsh_sessions/
-
-# Persoonlijke mappen
-/Applications/
-/Desktop/
-/Documents/
-/Downloads/
-/Library/
-/Movies/
-/Music/
-/Pictures/
-/Public/
-/PyCharmMiscProject/
-/PycharmProjects/
-
-# Overige bestanden
-/fix_vv_vrc_nginx.sh
-/te_verwijderen.txt
-/recovered_files/
-/vv-vrc-frontend-new/
-/vv-vrc-frontend/
-/Eindopdracht_KommerTanis/
-/Google Drive
-
-#Environment Variabelen
+# Omgevingsvariabelen
 .env
 .env.local
 .env.*.local
