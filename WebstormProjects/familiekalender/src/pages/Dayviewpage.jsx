@@ -168,11 +168,20 @@ function Dayviewpage() {
 
     return (
         <div className="dayview-container">
-            <PageHeader className="dayview-header">
-                <button className="nav-arrow left" onClick={vorigeDag} disabled={isNavigating}>Vorige</button>
-                <h1>{date ? formatDateForHeader(date): "Dagweergave"}</h1>
-                <button className="nav-arrow right" onClick={volgendeDag} disabled={isNavigating}>Volgende</button>
-            </PageHeader>
+           <PageHeader
+               className="dayview-header"
+               left={
+               <button className="nav-arrow left" onClick={vorigeDag} disabled={isNavigating}>
+                   Vorige
+                   </button>
+               }
+               title={date ? formatDateForHeader(date) : "Dagweergave"}
+               right={
+               <button className="nav-arrow right" onClick={volgendeDag} disabled={isNavigating}>
+                   Volgende
+               </button>
+               }
+           />
 
             <button className="back-button" onClick={gaTerug}>Terug naar kalender</button>
 

@@ -138,7 +138,6 @@ function Homepage() {
 
                 <Button type="submit" variant="primary">Inloggen</Button>
                 <Button type="button" variant="secondary" onClick={gaNaarRegistreren}>Registreren</Button>
-                <Button type="button" variant="tertiary" onClick={wachtwoordVergeten}>Wachtwoord vergeten?</Button>
             </form>
         </div>
     );
